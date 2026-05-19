@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI 驅鳥回報 - 系統登入</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#006970",
+                        "primary-fixed": "#7df4ff",
+                        "on-surface-variant": "#b9cacb",
+                        "on-primary-fixed-variant": "#004f54",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#79ff5b",
+                        "secondary-fixed-dim": "#2ae500",
+                        "on-tertiary": "#3c0090",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#e1e2eb",
+                        "on-surface": "#e1e2eb",
+                        "on-tertiary-fixed": "#23005b",
+                        "on-secondary": "#053900",
+                        "on-primary-container": "#006970",
+                        "secondary-container": "#2ff801",
+                        "outline": "#849495",
+                        "on-tertiary-fixed-variant": "#5700c9",
+                        "on-error": "#690005",
+                        "outline-variant": "#3b494b",
+                        "tertiary": "#faf3ff",
+                        "surface-container-low": "#191c22",
+                        "surface": "#10131a",
+                        "inverse-on-surface": "#2e3037",
+                        "on-secondary-fixed": "#022100",
+                        "on-primary-fixed": "#002022",
+                        "tertiary-fixed-dim": "#d1bcff",
+                        "background": "#10131a",
+                        "surface-tint": "#00dbe9",
+                        "surface-variant": "#32353c",
+                        "surface-container": "#1d2026",
+                        "surface-bright": "#363940",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#7213ff",
+                        "primary-container": "#00f0ff",
+                        "secondary": "#d7ffc5",
+                        "tertiary-fixed": "#e9ddff",
+                        "on-primary": "#00363a",
+                        "surface-container-highest": "#32353c",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-background": "#e1e2eb",
+                        "primary": "#dbfcff",
+                        "surface-container-lowest": "#0b0e14",
+                        "tertiary-container": "#e1d2ff",
+                        "on-secondary-fixed-variant": "#095300",
+                        "surface-dim": "#10131a",
+                        "surface-container-high": "#272a31"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-page": "40px",
+                        "gutter": "24px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .scanline-bg {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 240, 255, 0.05) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            background-size: 100% 4px, 3px 100%;
+        }
+        .grid-overlay {
+            background-image: radial-gradient(#ffffff10 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .glass-panel {
+            background: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .cyber-border {
+            border-image: linear-gradient(to bottom, #00f0ff, transparent) 1;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .error-shake {
+            animation: shake 0.4s ease-in-out;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-8px); }
+            40% { transform: translateX(8px); }
+            60% { transform: translateX(-5px); }
+            80% { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md min-h-screen relative overflow-hidden select-none">
+<!-- Background Layers -->
+<div class="fixed inset-0 grid-overlay pointer-events-none opacity-40"></div>
+<div class="fixed inset-0 scanline-bg pointer-events-none opacity-20"></div>
+<div class="fixed inset-0 bg-gradient-to-tr from-surface-container-lowest via-transparent to-primary-container/5 pointer-events-none"></div>
+<!-- Top Navigation -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#0B0E14]/80 backdrop-blur-xl border-b border-[#ffffff10] shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="font-headline-md text-primary-container drop-shadow-[0_0_8px_rgba(0,240,255,0.5)] tracking-wider uppercase">AI 驅鳥回報</span>
+</div>
+<button class="w-10 h-10 border border-primary-container/50 flex items-center justify-center text-primary-container transition-all duration-300 ease-in-out active:scale-95 hover:bg-primary-container/10 hover:shadow-[0_0_10px_rgba(0,240,255,0.3)]">
+<span class="material-symbols-outlined">home</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="relative z-10 w-full h-screen flex items-center justify-center pt-16">
+<!-- Background Hero Element -->
+<div class="absolute inset-0 z-0 flex items-center justify-center opacity-10">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4CvOaqF5rwl1nVyOtRbRVXcOtKJOdYN1cr887t_gB17Fhz5XeyZeSYKQWVyxEMg6QEcZh9SZyJFB3Y9o-Y4Mo_v2_iEXJZfintpCHp_mBGhlVo9U4wFVxB3wQPJ93UYQ16_fPpiJRDFKUr17ww5RxerJ4erGKCadZ6oViYAPsZtrzY7pyGcQ-4zVdnZEfg__C-gaZPaN3PFbcDozxzUwT267CP2T3qj-I5d0TQJvTgkMEcaFIlf58xuBdks4E55_6Ynf-BUfKhg"/>
+</div>
+<!-- Authentication Panel -->
+<div class="glass-panel w-full max-w-md p-8 relative overflow-hidden group" id="auth-panel">
+<!-- Decorative Accent Lines -->
+<div class="absolute top-0 left-0 w-16 h-1 bg-primary-container shadow-[0_0_10px_rgba(0,240,255,0.8)]"></div>
+<div class="absolute bottom-0 right-0 w-16 h-1 bg-primary-container"></div>
+<div class="mb-10 text-center">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-full border border-primary-container/20 bg-primary-container/5 mb-4">
+<span class="material-symbols-outlined text-primary-container text-4xl" style="font-variation-settings: 'FILL' 1;">fingerprint</span>
+</div>
+<h1 class="font-headline-md text-on-surface tracking-widest uppercase mb-1">身分驗證面板</h1>
+<p class="text-on-surface-variant font-label-caps opacity-60">Terminal Access Restricted Area</p>
+</div>
+<div class="space-y-6">
+<!-- Operator ID Input -->
+<div class="space-y-2">
+<label class="block font-label-caps text-primary-container/80 ml-1">技術員編號 / OPERATOR ID</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary-container/40 text-lg">badge</span>
+<input id="input-id" class="w-full bg-surface-container-high border-b border-outline-variant focus:border-secondary-container text-on-surface font-mono py-3 pl-10 pr-4 transition-all duration-300 outline-none placeholder:text-outline/30" placeholder="THX-1138-00" type="text"/>
+</div>
+</div>
+<!-- Access Key Input -->
+<div class="space-y-2">
+<label class="block font-label-caps text-primary-container/80 ml-1">存取密鑰 / ACCESS KEY</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary-container/40 text-lg">key</span>
+<input id="input-pw" class="w-full bg-surface-container-high border-b border-outline-variant focus:border-secondary-container text-on-surface font-mono py-3 pl-10 pr-4 transition-all duration-300 outline-none placeholder:text-outline/30" placeholder="••••••••••••" type="password"/>
+</div>
+</div>
+<!-- Status / Error Message -->
+<div id="status-bar" class="flex items-center gap-3 py-2 px-3 border border-[#ffffff05] bg-surface-container-low/50">
+<div id="status-dot" class="w-2 h-2 bg-secondary-container rounded-full animate-pulse shadow-[0_0_8px_#2ae500]"></div>
+<span id="status-text" class="text-[10px] font-label-caps text-on-surface-variant">加密連線已建立：AES-256 ENCRYPTION ACTIVE</span>
+</div>
+<!-- Launch Button -->
+<button id="login-btn" onclick="handleLogin()" class="w-full group/btn bg-primary-container text-on-primary h-14 flex items-center justify-center gap-3 font-headline-md transition-all duration-300 active:scale-95 relative overflow-hidden">
+<span class="relative z-10" id="btn-text">啟動程序</span>
+<span class="material-symbols-outlined relative z-10 transition-transform duration-300 group-hover/btn:translate-x-2" id="btn-icon">terminal</span>
+<div class="absolute inset-0 bg-white/10 -translate-y-full group-hover/btn:translate-y-full transition-transform duration-700 ease-in-out"></div>
+</button>
+</div>
+<div class="mt-8 pt-6 border-t border-[#ffffff05] flex justify-between items-center text-[10px] font-label-caps text-on-surface-variant/40">
+<span>VER: 4.2.0-STABLE</span>
+<span>SYSTEM STATUS: OPTIMAL</span>
+</div>
+</div>
+<!-- Corner Info -->
+<div class="fixed bottom-10 left-10 opacity-30 font-label-caps text-[10px] leading-relaxed text-primary-container hidden md:block">
+            LAT: 25.0330° N<br/>
+            LONG: 121.5654° E<br/>
+            TEMP: 24.5°C
+        </div>
+<div class="fixed bottom-10 right-10 flex gap-4 hidden md:flex">
+<div class="flex flex-col items-end">
+<span class="text-[10px] font-label-caps text-secondary-container/60">SENSORS</span>
+<div class="flex gap-1 mt-1">
+<div class="w-1 h-3 bg-secondary-container"></div>
+<div class="w-1 h-3 bg-secondary-container"></div>
+<div class="w-1 h-3 bg-secondary-container"></div>
+<div class="w-1 h-3 bg-secondary-container/20"></div>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[10px] font-label-caps text-primary-container/60">UPLINK</span>
+<div class="flex gap-1 mt-1">
+<div class="w-1 h-3 bg-primary-container"></div>
+<div class="w-1 h-3 bg-primary-container"></div>
+<div class="w-1 h-3 bg-primary-container/20"></div>
+<div class="w-1 h-3 bg-primary-container/20"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- UI Decor -->
+<div class="fixed top-0 left-0 w-32 h-32 border-l border-t border-primary-container/20 pointer-events-none mt-20 ml-10"></div>
+<div class="fixed bottom-0 right-0 w-32 h-32 border-r border-b border-primary-container/20 pointer-events-none mb-10 mr-10"></div>
+
+<script>
+  const VALID_ID = 'abc123';
+  const VALID_PW = 'ABC123';
+
+  function handleLogin() {
+    const id = document.getElementById('input-id').value.trim();
+    const pw = document.getElementById('input-pw').value;
+    const btn = document.getElementById('login-btn');
+    const btnText = document.getElementById('btn-text');
+    const btnIcon = document.getElementById('btn-icon');
+    const statusDot = document.getElementById('status-dot');
+    const statusText = document.getElementById('status-text');
+    const panel = document.getElementById('auth-panel');
+
+    if (id === VALID_ID && pw === VALID_PW) {
+      // 成功
+      btnText.textContent = '驗證成功';
+      btnIcon.textContent = 'check_circle';
+      btn.classList.remove('bg-primary-container');
+      btn.classList.add('bg-secondary-container');
+      statusDot.classList.remove('bg-secondary-container', 'shadow-[0_0_8px_#2ae500]');
+      statusDot.classList.add('bg-secondary-container');
+      statusText.textContent = '身分驗證完成，正在載入系統...';
+      statusText.style.color = '#2ff801';
+
+      setTimeout(() => {
+        window.location.href = 'code2.html';
+      }, 1000);
+
+    } else {
+      // 失敗
+      panel.classList.add('error-shake');
+      statusDot.classList.remove('bg-secondary-container', 'shadow-[0_0_8px_#2ae500]');
+      statusDot.classList.add('bg-error', 'shadow-[0_0_8px_#ff0000]');
+      statusText.textContent = '存取拒絕：帳號或密鑰錯誤';
+      statusText.style.color = '#ffb4ab';
+
+      setTimeout(() => {
+        panel.classList.remove('error-shake');
+        statusDot.classList.remove('bg-error', 'shadow-[0_0_8px_#ff0000]');
+        statusDot.classList.add('bg-secondary-container', 'shadow-[0_0_8px_#2ae500]');
+        statusText.textContent = '加密連線已建立：AES-256 ENCRYPTION ACTIVE';
+        statusText.style.color = '';
+      }, 2000);
+    }
+  }
+
+  // Enter 鍵也可以登入
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') handleLogin();
+  });
+</script>
+</body></html>

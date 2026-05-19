@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#006970",
+                      "primary-fixed": "#7df4ff",
+                      "on-surface-variant": "#b9cacb",
+                      "on-primary-fixed-variant": "#004f54",
+                      "error-container": "#93000a",
+                      "secondary-fixed": "#79ff5b",
+                      "secondary-fixed-dim": "#2ae500",
+                      "on-tertiary": "#3c0090",
+                      "on-error-container": "#ffdad6",
+                      "inverse-surface": "#e1e2eb",
+                      "on-surface": "#e1e2eb",
+                      "on-tertiary-fixed": "#23005b",
+                      "on-secondary": "#053900",
+                      "on-primary-container": "#006970",
+                      "secondary-container": "#2ff801",
+                      "outline": "#849495",
+                      "on-tertiary-fixed-variant": "#5700c9",
+                      "on-error": "#690005",
+                      "on-secondary": "#053900",
+                      "on-primary-container": "#006970",
+                      "secondary-container": "#2ff801",
+                      "outline": "#849495",
+                      "on-tertiary-fixed-variant": "#5700c9",
+                      "on-error": "#690005",
+                      "on-error": "#690005",
+                      "on-secondary-container": "#0f6d00",
+                      "outline-variant": "#3b494b",
+                      "tertiary": "#faf3ff",
+                      "surface-container-low": "#191c22",
+                      "surface": "#10131a",
+                      "inverse-on-surface": "#2e3037",
+                      "on-secondary-fixed": "#022100",
+                      "on-primary-fixed": "#002022",
+                      "tertiary-fixed-dim": "#d1bcff",
+                      "background": "#10131a",
+                      "surface-tint": "#00dbe9",
+                      "surface-variant": "#32353c",
+                      "surface-container": "#1d2026",
+                      "surface-bright": "#363940",
+                      "error": "#ffb4ab",
+                      "on-tertiary-container": "#7213ff",
+                      "primary-container": "#00f0ff",
+                      "secondary": "#d7ffc5",
+                      "tertiary-fixed": "#e9ddff",
+                      "on-primary": "#00363a",
+                      "surface-container-highest": "#32353c",
+                      "primary-fixed-dim": "#00dbe9",
+                      "on-background": "#e1e2eb",
+                      "primary": "#dbfcff",
+                      "surface-container-lowest": "#0b0e14",
+                      "tertiary-container": "#e1d2ff",
+                      "on-secondary-fixed-variant": "#095300",
+                      "surface-dim": "#10131a",
+                      "surface-container-high": "#272a31"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "margin-page": "40px",
+                      "gutter": "24px",
+                      "container-max": "1440px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Space Grotesk"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Space Grotesk"],
+                      "label-caps": ["Space Grotesk"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 240, 255, 0.2);
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            animation: scanning 4s linear infinite;
+        }
+        @keyframes scanning {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        .grid-overlay {
+            background-image: radial-gradient(#ffffff05 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md grid-overlay h-screen overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#0B0E14]/80 backdrop-blur-xl border-b border-[#ffffff10] shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md tracking-wider uppercase text-[#00F0FF] drop-shadow-[0_0_8px_rgba(0,240,255,0.5)]">AI 驅鳥回報</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 border border-[#00F0FF] flex items-center justify-center transition-all duration-300 ease-in-out active:scale-95 hover:bg-[#00F0FF]/10 hover:shadow-[0_0_10px_rgba(0,240,255,0.3)]">
+<span class="material-symbols-outlined text-[#00F0FF]">home</span>
+</button>
+</div>
+</header>
+<!-- Side Navigation Bar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] z-40 flex flex-col justify-between py-8 bg-[#161B22]/80 backdrop-blur-md w-64 border-r border-[#ffffff10] shadow-2xl">
+<nav class="flex flex-col gap-2 px-4">
+<!-- 指揮中心 (Active) -->
+<a class="flex items-center gap-4 px-4 py-3 text-[#00F0FF] bg-[#00F0FF]/10 border-r-2 border-[#00F0FF] shadow-[inset_-10px_0_15px_-10px_rgba(0,240,255,0.4)] transition-colors duration-200 font-label-caps uppercase" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span>指揮中心</span>
+</a>
+<!-- 活動記錄 -->
+<a class="flex items-center gap-4 px-4 py-3 text-slate-400 opacity-70 hover:text-[#00F0FF] hover:bg-[#ffffff05] transition-colors duration-200 font-label-caps uppercase" href="code3.html">
+<span class="material-symbols-outlined">history_edu</span>
+<span>活動記錄</span>
+</a>
+<!-- 系統設定 -->
+<a class="flex items-center gap-4 px-4 py-3 text-slate-400 opacity-70 hover:text-[#00F0FF] hover:bg-[#ffffff05] transition-colors duration-200 font-label-caps uppercase" href="code4.html">
+<span class="material-symbols-outlined">settings</span>
+<span>系統設定</span>
+</a>
+</nav>
+<div class="px-4 relative group">
+<button class="flex items-center gap-3 w-full p-4 glass-panel border-[#ffffff10] hover:border-[#00F0FF]/40 transition-all">
+<div class="w-10 h-10 bg-surface-container-high rounded-full flex items-center justify-center overflow-hidden border border-[#ffffff20]">
+<img alt="Operator" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a male security operator with short dark hair, wearing a high-tech tactical headset. The lighting is dramatic, with cool blue neon highlights reflecting off his skin, creating a serious and focused atmosphere. The background is a blurred dark terminal with glowing green and blue interface elements, emphasizing a cyber-industrial aesthetic consistent with a high-stakes command center environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNHQcEAQQhWBgyX93vpi2raczoWi1JvLu_kD95uYLQE-DHhrlhQL5ABXuQfHZOmUzCSM3IgKbqXf3MdVIS331ie5L_5QHMyIeZxXStFGjYCuKhXnOTHyC8_jvKlnOgtHaI9NySmV6AtVUm_e0XSRUsQwNR75f3sLGZdfuFi0SmvN3n49H7LH2ZWbt73O_WkECc-Lk2rt6rFGs60Qafkgm_ZMk7P3P0OEO3tX663nAhg9OSrrWUrUAnTukpztwQEKZh5-5RTzzm0Q"/>
+</div>
+<div class="text-left">
+<div class="font-label-caps text-on-surface">C. 韓德森</div>
+<div class="text-[10px] text-primary-fixed-dim tracking-widest uppercase">終端機啟動</div>
+</div>
+</button>
+<!-- Hidden Logout Dropdown (Hover/Click logic placeholder) -->
+<div class="absolute bottom-full left-4 w-[calc(100%-32px)] mb-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none group-hover:pointer-events-auto">
+<button class="w-full flex items-center justify-center gap-2 p-3 bg-error-container text-on-error-container font-label-caps hover:bg-error transition-colors">
+<span class="material-symbols-outlined text-sm">logout</span>
+                    登出
+                </button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 mt-16 p-4 h-[calc(100vh-64px)] flex gap-4 overflow-hidden">
+<!-- Central Tactical Feed -->
+<section class="flex-1 flex flex-col gap-4 overflow-hidden min-w-0 min-h-0">
+<div class="flex-1 glass-panel relative overflow-hidden border-[#00F0FF]/20 min-h-0">
+<!-- 直播 標籤 -->
+<div class="absolute top-4 right-4 z-10 font-label-caps text-on-surface bg-error-container/80 px-3 py-1 flex items-center gap-2 animate-pulse">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                    直播
+                </div>
+<!-- Main Video Stream Placeholder -->
+<div class="w-full h-full relative">
+<img id="drone-feed" class="w-full h-full object-cover opacity-60 mix-blend-luminosity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYf7t8yxKr1KczS2EbxUv3VoJS_tnDbZsgDCes_Lpat6mz2o6sBLVxYb-yoFh9HSfklsWMpAUcHMIhID6lKkkmbww8m3U0wsAC6cCKRPgyB4OzSEX-Dx6iWrVakUTu0ZVECNrbW-237ksUSPOBrLTxQfz6iGgItFwhif4yBFoedi6clwykwIO_8Abvgu9YWJGDr2fODYIAG9KgfR8JQpFePXQKQdzPVlnu-QkRwg4h0wICmOnC0extc413W8n-FoRS0cMR_7U8hw" onerror="this.style.display='none'; document.getElementById('no-signal').style.display='flex';"/>
+<!-- 無訊號 畫面 -->
+<div id="no-signal" class="w-full h-full absolute inset-0 bg-[#000] flex-col items-center justify-center gap-3 font-label-caps text-slate-500 tracking-widest hidden">
+  <span class="material-symbols-outlined text-5xl text-slate-600">videocam_off</span>
+  <span>無訊號</span>
+</div>
+<!-- Tactical UI Elements -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-64 h-64 border border-[#00F0FF]/30 rounded-full flex items-center justify-center">
+<div class="w-32 h-32 border border-[#00F0FF]/50 rounded-full flex items-center justify-center">
+<div class="w-1 h-1 bg-[#00F0FF] shadow-[0_0_10px_#00F0FF]"></div>
+</div>
+</div>
+</div>
+<div class="scanline"></div>
+</div>
+
+</div>
+<!-- Bottom Data Strip -->
+<div class="h-20 shrink-0 grid grid-cols-4 gap-4">
+<div class="glass-panel p-3 border-l-2 border-secondary-fixed">
+<div class="text-[10px] font-label-caps text-slate-400">運作設備</div>
+<div class="text-headline-md text-secondary-fixed font-headline-md">12 / 12</div>
+</div>
+<div class="glass-panel p-3 border-l-2 border-[#00F0FF]">
+<div class="text-[10px] font-label-caps text-slate-400">已觸發驅鳥</div>
+<div class="text-headline-md text-[#00F0FF] font-headline-md">04</div>
+</div>
+<div class="glass-panel p-3 border-l-2 border-primary-fixed-dim">
+<div class="text-[10px] font-label-caps text-slate-400">空域清除率</div>
+<div class="text-headline-md text-primary-fixed-dim font-headline-md">98%</div>
+</div>
+<div class="glass-panel p-3 border-l-2 border-error">
+<div class="text-[10px] font-label-caps text-slate-400">威脅等級</div>
+<div class="text-headline-md text-error font-headline-md">低</div>
+</div>
+</div>
+</section>
+<!-- Right Quick Actions Panel -->
+<aside class="w-72 shrink-0 flex flex-col gap-4">
+<!-- Quick Access -->
+<div class="flex flex-col gap-4">
+<h3 class="font-label-caps text-primary-fixed-dim tracking-widest">快速操作</h3>
+<!-- Recent Activity Action -->
+<button onclick="location.href='code3.html'" class="w-full glass-panel p-6 flex flex-col items-start gap-4 hover:border-[#00F0FF] transition-all group">
+<div class="w-12 h-12 bg-[#00F0FF]/10 rounded-lg flex items-center justify-center text-[#00F0FF] group-hover:shadow-[0_0_15px_rgba(0,240,255,0.3)]">
+<span class="material-symbols-outlined text-2xl">history_edu</span>
+</div>
+<div class="text-left">
+<div class="font-headline-md text-lg text-[#00F0FF]">活動記錄</div>
+<div class="text-xs text-slate-400 mt-1">查看最近的系統干預與警報日誌。</div>
+</div>
+</button>
+<!-- System Config Action -->
+<button onclick="location.href='code4.html'" class="w-full glass-panel p-6 flex flex-col items-start gap-4 hover:border-[#00F0FF] transition-all group">
+<div class="w-12 h-12 bg-[#00F0FF]/10 rounded-lg flex items-center justify-center text-[#00F0FF] group-hover:shadow-[0_0_15px_rgba(0,240,255,0.3)]">
+<span class="material-symbols-outlined text-2xl">settings</span>
+</div>
+<div class="text-left">
+<div class="font-headline-md text-lg text-[#00F0FF]">系統設定</div>
+<div class="text-xs text-slate-400 mt-1">配置偵測靈敏度與自動化協定。</div>
+</div>
+</button>
+</div>
+</aside>
+</main>
+</body></html>

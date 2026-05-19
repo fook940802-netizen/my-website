@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#006970",
+                        "primary-fixed": "#7df4ff",
+                        "on-surface-variant": "#b9cacb",
+                        "on-primary-fixed-variant": "#004f54",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#79ff5b",
+                        "secondary-fixed-dim": "#2ae500",
+                        "on-tertiary": "#3c0090",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#e1e2eb",
+                        "on-surface": "#e1e2eb",
+                        "on-tertiary-fixed": "#23005b",
+                        "on-secondary": "#053900",
+                        "on-primary-container": "#006970",
+                        "secondary-container": "#2ff801",
+                        "outline": "#849495",
+                        "on-tertiary-fixed-variant": "#5700c9",
+                        "on-error": "#690005",
+                        "on-secondary-container": "#0f6d00",
+                        "outline-variant": "#3b494b",
+                        "tertiary": "#faf3ff",
+                        "surface-container-low": "#191c22",
+                        "surface": "#10131a",
+                        "inverse-on-surface": "#2e3037",
+                        "on-secondary-fixed": "#022100",
+                        "on-primary-fixed": "#002022",
+                        "tertiary-fixed-dim": "#d1bcff",
+                        "background": "#10131a",
+                        "surface-tint": "#00dbe9",
+                        "surface-variant": "#32353c",
+                        "surface-container": "#1d2026",
+                        "surface-bright": "#363940",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#7213ff",
+                        "primary-container": "#00f0ff",
+                        "secondary": "#d7ffc5",
+                        "tertiary-fixed": "#e9ddff",
+                        "on-primary": "#00363a",
+                        "surface-container-highest": "#32353c",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-background": "#e1e2eb",
+                        "primary": "#dbfcff",
+                        "surface-container-lowest": "#0b0e14",
+                        "tertiary-container": "#e1d2ff",
+                        "on-secondary-fixed-variant": "#095300",
+                        "surface-dim": "#10131a",
+                        "surface-container-high": "#272a31"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-page": "40px",
+                        "gutter": "24px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0B0E14;
+            background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+            background-size: 20px 20px;
+            color: #e1e2eb;
+            overflow: hidden;
+        }
+        .glass-panel {
+            background: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .cyber-glow-primary {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 240, 255, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .status-pulse {
+            animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .5; transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased h-screen w-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#0B0E14]/80 backdrop-blur-xl border-b border-[#ffffff10] shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#00F0FF] text-2xl" data-icon="security" style="font-variation-settings: 'FILL' 1;">security</span>
+<h1 class="text-xl font-bold text-[#00F0FF] drop-shadow-[0_0_8px_rgba(0,240,255,0.5)] font-['Space_Grotesk'] tracking-wider uppercase">AI 驅鳥回報</h1>
+</div>
+<div class="flex items-center gap-4">
+<button onclick="location.href='code2.html'" class="w-10 h-10 border border-[#00F0FF] flex items-center justify-center transition-all duration-300 ease-in-out active:scale-95 hover:bg-[#00F0FF]/10 hover:shadow-[0_0_10px_rgba(0,240,255,0.3)]">
+<span class="material-symbols-outlined text-[#00F0FF]" data-icon="home">home</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] z-40 flex flex-col justify-between py-8 bg-[#161B22]/80 backdrop-blur-md border-r border-[#ffffff10] shadow-2xl w-64">
+<nav class="flex flex-col gap-2 px-4">
+<a class="flex items-center gap-4 px-4 py-3 text-slate-400 opacity-70 transition-colors duration-200 hover:text-[#00F0FF] hover:bg-[#ffffff05] font-['Space_Grotesk'] text-sm font-medium" href="code2.html">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+                指揮中心
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-400 opacity-70 transition-colors duration-200 hover:text-[#00F0FF] hover:bg-[#ffffff05] font-['Space_Grotesk'] text-sm font-medium" href="code3.html">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+                活動記錄
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#00F0FF] bg-[#00F0FF]/10 border-r-2 border-[#00F0FF] shadow-[inset_-10px_0_15px_-10px_rgba(0,240,255,0.4)] font-['Space_Grotesk'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+                系統設定
+            </a>
+</nav>
+<div class="px-4">
+<div class="group relative">
+<button class="w-full flex items-center gap-3 p-3 bg-surface-container-high/50 hover:bg-surface-container-highest transition-all rounded-lg">
+<div class="w-10 h-10 bg-primary-container/20 border border-primary-container/30 flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-primary-container" data-icon="person">person</span>
+</div>
+<div class="text-left overflow-hidden">
+<p class="font-headline-md text-sm text-on-surface truncate">C. Henderson</p>
+<p class="text-[10px] uppercase tracking-widest text-primary-fixed-dim/60">Terminal Active</p>
+</div>
+</button>
+<!-- Popup Logout (Hover target for demo) -->
+<div class="absolute bottom-full left-0 w-full mb-2 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+<button class="w-full py-3 bg-error-container/20 border border-on-error-container/30 text-on-error-container hover:bg-error-container/40 flex items-center justify-center gap-2 rounded-lg">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+<span class="font-label-caps text-[12px]">登出</span>
+</button>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-8 h-[calc(100vh-64px)] overflow-y-auto">
+<div class="max-w-container-max mx-auto space-y-gutter">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-8 border-l-4 border-primary-container pl-6">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">系統效能監控</h2>
+<p class="text-on-surface-variant font-body-lg">SYSTEM PERFORMANCE CONFIGURATION &amp; TELEMETRY</p>
+</div>
+<div class="text-right">
+<p class="text-primary-fixed font-label-caps tracking-[0.2em]">NODE-0428-DELTA</p>
+<p class="text-on-surface-variant/40 text-[12px]">UPTIME: 142:12:44</p>
+</div>
+</div>
+<!-- Bento Grid - Resource Panels -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- CPU Panel -->
+<div class="col-span-4 glass-panel p-6 relative overflow-hidden group">
+<div class="scanline"></div>
+<div class="flex justify-between items-start mb-6">
+<div class="flex flex-col">
+<span class="font-label-caps text-on-surface-variant/60 mb-1">PROCESSOR CLUSTER</span>
+<span class="font-headline-md text-primary-container uppercase">CPU 核心溫度</span>
+</div>
+<span class="material-symbols-outlined text-primary-container/40" data-icon="memory">memory</span>
+</div>
+<div class="flex items-end gap-4 mb-8">
+<span class="text-6xl font-bold font-headline-md tracking-tighter">42.8</span>
+<span class="text-2xl text-on-surface-variant font-headline-md pb-1">°C</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-label-caps text-on-surface-variant/40">
+<span>THERMAL LIMIT</span>
+<span>85.0°C</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full relative">
+<div class="h-full bg-primary-container cyber-glow-primary w-[50%]"></div>
+</div>
+</div>
+</div>
+<!-- Memory Panel -->
+<div class="col-span-4 glass-panel p-6 relative overflow-hidden">
+<div class="flex justify-between items-start mb-6">
+<div class="flex flex-col">
+<span class="font-label-caps text-on-surface-variant/60 mb-1">MEMORY ALLOCATION</span>
+<span class="font-headline-md text-secondary-fixed uppercase">記憶體剩餘量</span>
+</div>
+<span class="material-symbols-outlined text-secondary-fixed/40" data-icon="settings_input_component">settings_input_component</span>
+</div>
+<div class="flex items-end gap-4 mb-8">
+<span class="text-6xl font-bold font-headline-md tracking-tighter">12.4</span>
+<span class="text-2xl text-on-surface-variant font-headline-md pb-1">GB</span>
+</div>
+<div class="grid grid-cols-8 gap-1">
+<div class="h-4 bg-secondary-fixed"></div>
+<div class="h-4 bg-secondary-fixed"></div>
+<div class="h-4 bg-secondary-fixed"></div>
+<div class="h-4 bg-secondary-fixed"></div>
+<div class="h-4 bg-secondary-fixed/30"></div>
+<div class="h-4 bg-secondary-fixed/30"></div>
+<div class="h-4 bg-secondary-fixed/30"></div>
+<div class="h-4 bg-secondary-fixed/30"></div>
+</div>
+</div>
+<!-- Storage Panel -->
+<div class="col-span-4 glass-panel p-6 relative overflow-hidden">
+<div class="flex justify-between items-start mb-6">
+<div class="flex flex-col">
+<span class="font-label-caps text-on-surface-variant/60 mb-1">LOCAL REPOSITORY</span>
+<span class="font-headline-md text-primary-fixed uppercase">儲存空間剩餘量</span>
+</div>
+<span class="material-symbols-outlined text-primary-fixed/40" data-icon="database">database</span>
+</div>
+<div class="flex items-end gap-4 mb-8">
+<span class="text-6xl font-bold font-headline-md tracking-tighter">894</span>
+<span class="text-2xl text-on-surface-variant font-headline-md pb-1">GB</span>
+</div>
+<div class="relative pt-1">
+<div class="overflow-hidden h-2 mb-4 text-xs flex bg-surface-container-highest">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary-fixed" style="width:78%"></div>
+</div>
+</div>
+</div>
+
+<!-- Emergency Stop -->
+<div class="col-span-12 mt-12">
+<button class="w-full bg-error h-24 flex items-center justify-center gap-4 text-on-error hover:bg-on-error hover:text-error transition-all duration-300 active:scale-[0.98] group relative overflow-hidden">
+<div class="absolute inset-0 bg-white/5 pointer-events-none group-active:bg-black/10"></div>
+<span class="material-symbols-outlined text-5xl" data-icon="report" style="font-variation-settings: 'FILL' 1;">report</span>
+<div class="text-left">
+<p class="font-headline-lg tracking-widest">緊急停止</p>
+<p class="font-label-caps text-sm opacity-80 uppercase">EMERGENCY ALL-SYSTEM OVERRIDE</p>
+</div>
+</button>
+<p class="mt-4 text-center text-error/60 text-[12px] font-label-caps tracking-[0.3em]">WARNING: PRESSING THIS WILL DISCONNECT ALL REMOTE SENSORS AND DEPLOY PHYSICAL COUNTERMEASURES</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Background Decoration -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] opacity-20">
+<div class="absolute top-1/4 right-0 w-[800px] h-[800px] bg-[#00F0FF]/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-0 left-64 w-[600px] h-[600px] bg-error-container/10 rounded-full blur-[100px]"></div>
+</div>
+</body></html>

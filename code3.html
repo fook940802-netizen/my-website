@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0B0E14;
+            background-image: radial-gradient(#ffffff05 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .glow-cyan {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #00F0FF, transparent);
+            opacity: 0.1;
+            position: absolute;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#006970",
+                        "primary-fixed": "#7df4ff",
+                        "on-surface-variant": "#b9cacb",
+                        "on-primary-fixed-variant": "#004f54",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#79ff5b",
+                        "secondary-fixed-dim": "#2ae500",
+                        "on-tertiary": "#3c0090",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#e1e2eb",
+                        "on-surface": "#e1e2eb",
+                        "on-tertiary-fixed": "#23005b",
+                        "on-secondary": "#053900",
+                        "on-primary-container": "#006970",
+                        "secondary-container": "#2ff801",
+                        "outline": "#849495",
+                        "on-tertiary-fixed-variant": "#5700c9",
+                        "on-error": "#690005",
+                        "on-secondary-container": "#0f6d00",
+                        "outline-variant": "#3b494b",
+                        "tertiary": "#faf3ff",
+                        "surface-container-low": "#191c22",
+                        "surface": "#10131a",
+                        "inverse-on-surface": "#2e3037",
+                        "on-secondary-fixed": "#022100",
+                        "on-primary-fixed": "#002022",
+                        "tertiary-fixed-dim": "#d1bcff",
+                        "background": "#10131a",
+                        "surface-tint": "#00dbe9",
+                        "surface-variant": "#32353c",
+                        "surface-container": "#1d2026",
+                        "surface-bright": "#363940",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#7213ff",
+                        "primary-container": "#00f0ff",
+                        "secondary": "#d7ffc5",
+                        "tertiary-fixed": "#e9ddff",
+                        "on-primary": "#00363a",
+                        "surface-container-highest": "#32353c",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-background": "#e1e2eb",
+                        "primary": "#dbfcff",
+                        "surface-container-lowest": "#0b0e14",
+                        "tertiary-container": "#e1d2ff",
+                        "on-secondary-fixed-variant": "#095300",
+                        "surface-dim": "#10131a",
+                        "surface-container-high": "#272a31"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-hidden h-screen w-screen">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#0B0E14]/80 backdrop-blur-xl border-b border-[#ffffff10] shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+<div class="flex items-center gap-4">
+<span class="text-xl font-headline-md font-bold text-[#00F0FF] tracking-wider uppercase drop-shadow-[0_0_8px_rgba(0,240,255,0.5)]">AI 驅鳥回報</span>
+</div>
+<div class="flex items-center gap-4">
+<button onclick="location.href='code2.html'" class="w-10 h-10 flex items-center justify-center border border-[#00F0FF] text-[#00F0FF] transition-all duration-300 ease-in-out active:scale-95 hover:bg-[#00F0FF]/10 hover:shadow-[0_0_10px_rgba(0,240,255,0.3)]">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</button>
+</div>
+</header>
+<!-- Side Navigation Bar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] z-40 flex flex-col justify-between py-8 w-64 bg-[#161B22]/80 backdrop-blur-md border-r border-[#ffffff10] shadow-2xl">
+<nav class="flex flex-col gap-2">
+<a class="group flex items-center gap-4 px-6 py-4 text-slate-400 opacity-70 transition-colors duration-200 hover:text-[#00F0FF] hover:bg-[#ffffff05] font-headline-md text-sm font-medium" href="code2.html">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span>指揮中心</span>
+</a>
+<a class="group flex items-center gap-4 px-6 py-4 text-[#00F0FF] bg-[#00F0FF]/10 border-r-2 border-[#00F0FF] shadow-[inset_-10px_0_15px_-10px_rgba(0,240,255,0.4)] font-headline-md text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span>活動記錄</span>
+</a>
+<a class="group flex items-center gap-4 px-6 py-4 text-slate-400 opacity-70 transition-colors duration-200 hover:text-[#00F0FF] hover:bg-[#ffffff05] font-headline-md text-sm font-medium" href="code4.html">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>系統設定</span>
+</a>
+</nav>
+<div class="px-6 space-y-4">
+<div class="flex items-center gap-4 group cursor-pointer p-2 rounded-lg transition-all hover:bg-surface-container">
+<div class="w-10 h-10 bg-primary-container/20 rounded-full flex items-center justify-center border border-primary-container/30">
+<span class="material-symbols-outlined text-primary-container" data-icon="person">person</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-headline-md font-bold text-on-surface">C. Henderson</span>
+<span class="text-xs text-primary-fixed-dim/60 font-label-caps">Terminal Active</span>
+</div>
+</div>
+<button class="w-full flex items-center gap-4 px-4 py-3 text-error transition-all hover:bg-error/10 rounded-lg">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-headline-md text-sm font-medium">登出</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-6 h-[calc(100vh-64px)] overflow-hidden bg-transparent flex flex-col gap-4">
+<div class="flex flex-col gap-3 h-full min-h-0">
+<!-- Header Section -->
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<h1 class="font-headline-lg text-headline-lg text-primary-fixed uppercase tracking-tighter">活動分析</h1>
+<p class="text-on-surface-variant font-body-md opacity-80">24小時周界流量與驅鳥效果視覺化記錄</p>
+</div>
+<div class="flex items-center gap-4 bg-surface-container p-2 rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container-high rounded border border-outline-variant/50">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span class="text-sm font-label-caps">2023-11-24</span>
+</div>
+<button class="p-1 hover:text-primary-container transition-colors"><span class="material-symbols-outlined" data-icon="file_download">file_download</span></button>
+</div>
+</div>
+<!-- 24H Traffic Analysis Chart Card -->
+<section class="glass-panel rounded-xl overflow-hidden shadow-2xl relative shrink-0">
+<div class="p-6 border-b border-[#ffffff10] flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="w-1 h-4 bg-primary-container"></span>
+<h2 class="font-headline-md text-headline-md text-on-surface uppercase tracking-widest text-sm">流量分析（24小時）</h2>
+</div>
+<div class="flex gap-6">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-[#00F0FF] rounded-full shadow-[0_0_5px_#00F0FF]"></span>
+<span class="text-xs font-label-caps opacity-80">鳥類</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-secondary-fixed rounded-full shadow-[0_0_5px_#79ff5b]"></span>
+<span class="text-xs font-label-caps opacity-80">人員</span>
+</div>
+</div>
+</div>
+<div class="p-4 h-[220px] relative">
+<!-- Y-Axis Markers -->
+<div class="absolute left-12 top-8 bottom-12 flex flex-col justify-between text-[10px] text-slate-500 font-label-caps pr-4 border-r border-outline-variant/20">
+<span>25</span>
+<span>20</span>
+<span>15</span>
+<span>10</span>
+<span>5</span>
+<span>0</span>
+</div>
+<!-- Chart Area -->
+<div class="ml-16 mr-4 h-full relative border-b border-outline-variant/20 pb-6">
+<!-- Grid Lines -->
+<div class="absolute inset-0 grid grid-rows-5 pointer-events-none">
+<div class="border-t border-outline-variant/5"></div>
+<div class="border-t border-outline-variant/5"></div>
+<div class="border-t border-outline-variant/5"></div>
+<div class="border-t border-outline-variant/5"></div>
+<div class="border-t border-outline-variant/5"></div>
+</div>
+<!-- Data Lines (Simulated with SVGs) -->
+<svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 260">
+<defs>
+<linearGradient id="pigeonGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#00F0FF" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#00F0FF" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+<!-- 鳥類 Data (Cyan) - Y翻轉，數值高=Y小=畫面高 -->
+<path d="M0,220 Q40,200 80,160 T160,110 T240,60 T320,130 T400,150 T480,90 T560,40 T640,80 T720,120 T800,70 T880,100 T1000,80 L1000,260 L0,260 Z" fill="url(#pigeonGrad)"></path>
+<path d="M0,220 Q40,200 80,160 T160,110 T240,60 T320,130 T400,150 T480,90 T560,40 T640,80 T720,120 T800,70 T880,100 T1000,80" fill="none" stroke="#00F0FF" stroke-width="2"></path>
+<!-- 人員 Data (Green) -->
+<path d="M0,240 Q40,238 80,230 T160,235 T240,220 T320,215 T400,205 T480,225 T560,238 T640,240 T720,232 T800,228 T880,235 T1000,230" fill="none" stroke="#79ff5b" stroke-dasharray="4 2" stroke-width="2"></path>
+</svg>
+<!-- X-Axis Markers 00:00~24:00 每30分鐘 -->
+<div class="absolute bottom-0 w-full flex justify-between text-[10px] text-slate-500 font-label-caps px-1">
+<span>00:00</span><span class="opacity-30">00:30</span>
+<span>01:00</span><span class="opacity-30">01:30</span>
+<span>02:00</span><span class="opacity-30">02:30</span>
+<span>03:00</span><span class="opacity-30">03:30</span>
+<span>04:00</span><span class="opacity-30">04:30</span>
+<span>05:00</span><span class="opacity-30">05:30</span>
+<span>06:00</span><span class="opacity-30">06:30</span>
+<span>07:00</span><span class="opacity-30">07:30</span>
+<span>08:00</span><span class="opacity-30">08:30</span>
+<span>09:00</span><span class="opacity-30">09:30</span>
+<span>10:00</span><span class="opacity-30">10:30</span>
+<span>11:00</span><span class="opacity-30">11:30</span>
+<span>12:00</span><span class="opacity-30">12:30</span>
+<span>13:00</span><span class="opacity-30">13:30</span>
+<span>14:00</span><span class="opacity-30">14:30</span>
+<span>15:00</span><span class="opacity-30">15:30</span>
+<span>16:00</span><span class="opacity-30">16:30</span>
+<span>17:00</span><span class="opacity-30">17:30</span>
+<span>18:00</span><span class="opacity-30">18:30</span>
+<span>19:00</span><span class="opacity-30">19:30</span>
+<span>20:00</span><span class="opacity-30">20:30</span>
+<span>21:00</span><span class="opacity-30">21:30</span>
+<span>22:00</span><span class="opacity-30">22:30</span>
+<span>23:00</span><span class="opacity-30">23:30</span>
+<span>24:00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Records Table -->
+<section class="grid grid-cols-12 gap-4 flex-1 min-h-0 overflow-hidden">
+<!-- Data Filter Panel -->
+<div class="col-span-3 space-y-4 overflow-y-auto min-h-0">
+<div class="glass-panel p-5 rounded-xl space-y-6">
+<h3 class="font-headline-md text-sm uppercase tracking-wider text-primary-container">歷史記錄</h3>
+<div class="space-y-4">
+<div class="space-y-2">
+<label class="text-[10px] font-label-caps text-slate-500">搜尋條目</label>
+<div class="relative">
+<input class="w-full bg-[#0B0E14] border-b border-outline-variant focus:border-secondary-fixed focus:ring-0 text-sm font-body-md py-2 px-1" placeholder="終端機ID、物件..." type="text"/>
+<span class="material-symbols-outlined absolute right-2 top-2 text-slate-600 text-lg" data-icon="search">search</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-label-caps text-slate-500">日期範圍選擇</label>
+<div class="grid grid-cols-1 gap-2">
+<button class="flex items-center justify-between px-3 py-2 bg-surface-container rounded border border-outline-variant/30 text-xs text-on-surface hover:border-primary-container transition-all">
+<span>2023-11-17 ~ 2023-11-24</span>
+<span class="material-symbols-outlined text-xs" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-label-caps text-slate-500">偵測類型</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full text-[10px] font-label-caps bg-primary-container text-on-primary-container cursor-pointer">鳥類</span>
+<span class="px-3 py-1 rounded-full text-[10px] font-label-caps bg-secondary-fixed/20 text-secondary-fixed border border-secondary-fixed/30 cursor-pointer">人員</span>
+<span class="px-3 py-1 rounded-full text-[10px] font-label-caps bg-surface-container-high text-slate-400 border border-outline-variant/30 cursor-pointer">設備</span>
+</div>
+</div>
+</div>
+<button class="w-full py-3 bg-primary-container text-on-primary-container font-headline-md text-xs uppercase tracking-widest hover:glow-cyan transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="refresh">refresh</span>
+                            更新檢視
+                        </button>
+</div>
+</div>
+<!-- Table Content -->
+<div class="col-span-9 glass-panel rounded-xl overflow-hidden flex flex-col min-h-0">
+<div class="overflow-auto flex-1">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high border-b border-outline-variant/30">
+<th class="px-6 py-4 text-[10px] font-label-caps text-slate-500 tracking-widest uppercase">時間戳記</th>
+<th class="px-6 py-4 text-[10px] font-label-caps text-slate-500 tracking-widest uppercase">來源編號</th>
+<th class="px-6 py-4 text-[10px] font-label-caps text-slate-500 tracking-widest uppercase">偵測目標</th>
+<th class="px-6 py-4 text-[10px] font-label-caps text-slate-500 tracking-widest uppercase">信心指數</th>
+<th class="px-6 py-4 text-[10px] font-label-caps text-slate-500 tracking-widest uppercase">執行動作</th>
+<th class="px-6 py-4 text-[10px] font-label-caps text-slate-500 tracking-widest uppercase">狀態</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-primary-container/5 transition-colors group">
+<td class="px-6 py-4 font-label-caps text-xs text-on-surface">14:32:05</td>
+<td class="px-6 py-4 text-xs font-mono text-slate-400">TRM-882-Alpha</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#00F0FF]"></span>
+<span class="text-sm">鳥類 Cluster</span>
+</div>
+</td>
+<td class="px-6 py-4 text-xs text-on-surface">98.4%</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant italic">聲波脈衝 Lv.3</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-1 text-[10px] font-label-caps text-secondary-fixed bg-secondary-fixed/10 px-2 py-0.5 rounded-full border border-secondary-fixed/20 animate-pulse">
+<span class="material-symbols-outlined text-xs" data-icon="done_all">done_all</span> 已解決
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-primary-container/5 transition-colors group">
+<td class="px-6 py-4 font-label-caps text-xs text-on-surface">14:30:12</td>
+<td class="px-6 py-4 text-xs font-mono text-slate-400">TRM-882-Alpha</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed"></span>
+<span class="text-sm">人員 Tech</span>
+</div>
+</td>
+<td class="px-6 py-4 text-xs text-on-surface">99.1%</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant italic">身分驗證 - 放行</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-1 text-[10px] font-label-caps text-slate-400 bg-surface-container px-2 py-0.5 rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-xs" data-icon="verified">verified</span> 已記錄
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-primary-container/5 transition-colors group">
+<td class="px-6 py-4 font-label-caps text-xs text-on-surface">14:28:44</td>
+<td class="px-6 py-4 text-xs font-mono text-slate-400">CAM-004-Beta</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#00F0FF]"></span>
+<span class="text-sm">Single 鳥類</span>
+</div>
+</td>
+<td class="px-6 py-4 text-xs text-on-surface">87.2%</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant italic">視覺驅離</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-1 text-[10px] font-label-caps text-secondary-fixed bg-secondary-fixed/10 px-2 py-0.5 rounded-full border border-secondary-fixed/20">
+<span class="material-symbols-outlined text-xs" data-icon="done_all">done_all</span> 已解決
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-primary-container/5 transition-colors group">
+<td class="px-6 py-4 font-label-caps text-xs text-on-surface">14:25:31</td>
+<td class="px-6 py-4 text-xs font-mono text-slate-400">TRM-885-Delta</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#00F0FF]"></span>
+<span class="text-sm">鳥類 Cluster</span>
+</div>
+</td>
+<td class="px-6 py-4 text-xs text-on-surface">94.5%</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant italic">聲波脈衝 Lv.4</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-1 text-[10px] font-label-caps text-secondary-fixed bg-secondary-fixed/10 px-2 py-0.5 rounded-full border border-secondary-fixed/20">
+<span class="material-symbols-outlined text-xs" data-icon="done_all">done_all</span> 已解決
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-primary-container/5 transition-colors group">
+<td class="px-6 py-4 font-label-caps text-xs text-on-surface">14:21:00</td>
+<td class="px-6 py-4 text-xs font-mono text-slate-400">DRN-V2-09</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#00F0FF]"></span>
+<span class="text-sm">空中群體</span>
+</div>
+</td>
+<td class="px-6 py-4 text-xs text-on-surface">91.0%</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant italic">無人機追蹤</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-1 text-[10px] font-label-caps text-secondary-fixed bg-secondary-fixed/10 px-2 py-0.5 rounded-full border border-secondary-fixed/20">
+<span class="material-symbols-outlined text-xs" data-icon="done_all">done_all</span> 已解決
+                                        </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="mt-auto border-t border-outline-variant/20 p-4 flex justify-between items-center bg-[#161B22]/40">
+<span class="text-[10px] font-label-caps text-slate-500">顯示第 1-25 筆，共 1,244 筆</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant/30 hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary-container text-on-primary-container text-xs font-bold">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant/30 hover:bg-surface-container-high transition-all text-xs">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant/30 hover:bg-surface-container-high transition-all text-xs">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant/30 hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Faint Scanning Line -->
+<div class="scanline top-1/4 left-0"></div>
+</main>
+</body></html>
